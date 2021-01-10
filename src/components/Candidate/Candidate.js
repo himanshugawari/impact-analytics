@@ -16,7 +16,6 @@ const Candidate = ({
     setCandidate(temp[0]);
   }, [id, state]);
   let history = useHistory();
-  //   console.log('candidate', candidate);
   const onShortlist = () => {
     let check = rejected.filter((item) => item.id === candidate.id);
     if (check.length > 0) {
@@ -29,9 +28,7 @@ const Candidate = ({
     } else {
       setShortlisted([...shortlisted, candidate]);
     }
-    // setShortlisted([...shortlisted, candidate]);
     history.push(`/`);
-    // history.push(`/shortlisted`);
   };
   const onReject = () => {
     let check = shortlisted.filter((item) => item.id === candidate.id);
@@ -46,7 +43,6 @@ const Candidate = ({
       setRejected([...rejected, candidate]);
     }
     history.push(`/`);
-    // history.push(`/rejected`);
   };
   return (
     <div className='profile'>

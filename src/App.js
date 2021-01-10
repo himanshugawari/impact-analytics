@@ -15,7 +15,6 @@ function App() {
   const [shortlisted, setShortlisted] = useState([]);
   const [rejected, setRejected] = useState([]);
   const [search, setSearch] = useState('');
-  const [candidate, setCandidate] = useState({});
 
   useEffect(() => {
     fetch(
@@ -24,7 +23,6 @@ function App() {
       .then((response) => response.json())
       .then((result) => {
         setAllcandidates(result);
-        // setfilteredCandidates(result);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -33,13 +31,8 @@ function App() {
     const temp = allCandidates.filter((item) =>
       item.name.toLowerCase().includes(search.toLowerCase())
     );
-    // console.log(temp);
-    // console.log(search);
     setfilteredCandidates(temp);
-  }, [search]);
-
-  console.log('shortlisted', shortlisted);
-  console.log('rejected', rejected);
+  }, [search, allCandidates]);
 
   return (
     <Router>
